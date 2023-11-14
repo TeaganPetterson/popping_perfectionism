@@ -58,9 +58,11 @@ export default function Home() {
 				</div>
 			</div>
 		</div>
+		{/* Counters */}
 		<div className='w-4/5 aspect-[3/1]' style={{backgroundImage: `url("/Bubble-bg.jpeg")`}}>
 			Numbers
 		</div>
+		{/* Links Grid */}		
 		<div className='w-4/5 grid grid-rows-2 grid-flow-col gap-1'>
 			<div className='bg-slate-200 aspect-square'>a</div>
 			<div className='bg-slate-200 aspect-square'>a</div>
@@ -68,6 +70,7 @@ export default function Home() {
 			<div className='bg-slate-200 aspect-square'>a</div>
 			<div className='bg-slate-200 aspect-square'>a</div>
 		</div>
+		{/* Intake/Contact Form */}		
 		<div>
 			Intake/Contact Form
 		</div>
