@@ -23,7 +23,7 @@ export default function Home() {
     return (
         <main className="flex flex-col items-center justify-between w-screen">
             <div
-                className={`w-screen h-screen bg-cover relative ${
+                className={`w-screen h-screen bg-cover relative py-4 ${
                     scrolled ? "bg-white" : "bg-transparent"
                 }`}
                 style={{
@@ -49,27 +49,32 @@ export default function Home() {
                         scrolled ? "text-black" : "text-white"
                     }`}
                 >
-                    <div className="flex justify-start">
+                    <div className="flex justify-start text-2xl font-extrabold">
                         Popping Perfectionism
                     </div>
                     <div className="flex justify-center">
                         <a href="#" className="px-5">
-                            Home
+                            Podcast
                         </a>
                         <a href="#" className="px-5">
-                            About
+                            Events
                         </a>
                         <a href="#" className="px-5">
-                            Contact
+                            Coaching
+                        </a>
+                        <a href="#" className="px-5">
+                            Blog
                         </a>
                     </div>
-                    <div className="flex justify-end">Anna and Alysha</div>
+                    <div className="flex justify-end text-2xl font-extrabold">
+                        Anna and Alysha
+                    </div>
                 </div>
             </div>
 
             {/* Counters */}
             <div
-                className="w-3/4 aspect-[3/1]"
+                className="w-3/4 aspect-[3/1] my-4"
                 style={{ backgroundImage: `url("/Bubble-bg.jpeg")` }}
             >
                 Numbers
@@ -77,15 +82,40 @@ export default function Home() {
 
             {/* Links Grid */}
             <div className="w-3/4 grid grid-rows-2 grid-flow-col gap-1">
-                <div className="bg-slate-200 aspect-square">a</div>
-                <div className="bg-slate-200 aspect-square">a</div>
-                <div className="bg-slate-200 col-span-2">a</div>
-                <div className="bg-slate-200 aspect-square">a</div>
-                <div className="bg-slate-200 aspect-square">a</div>
+                <div
+                    className="bg-slate-200 aspect-square"
+                    style={{ backgroundImage: `url("/bubble-1.jpeg")` }}
+                >
+                    a
+                </div>
+                <div
+                    className="bg-slate-200 aspect-square"
+                    style={{ backgroundImage: `url("/bubble-3.jpeg")` }}
+                >
+                    a
+                </div>
+                <div
+                    className="bg-slate-200 col-span-2"
+                    style={{ backgroundImage: `url("/bubble-2.jpeg")` }}
+                >
+                    a
+                </div>
+                <div
+                    className="bg-slate-200 aspect-square"
+                    style={{ backgroundImage: `url("/bubble-4.jpeg")` }}
+                >
+                    a
+                </div>
+                <div
+                    className="bg-slate-200 aspect-square"
+                    style={{ backgroundImage: `url("/bubble-5.jpeg")` }}
+                >
+                    a
+                </div>
             </div>
 
             {/* Intake/Contact Form */}
-            <div className="flex min-h-screen items-center justify-center">
+            <div className="flex min-h-screen items-center justify-center my-4">
                 <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
                     <div className="mb-4">
                         <label
