@@ -22,26 +22,12 @@ export default function Home() {
 
     return (
         <main className="flex flex-col items-center justify-between w-screen">
-            <div
-                className={`w-screen h-screen bg-cover relative py-4 ${
-                    scrolled ? "bg-white" : "bg-transparent"
-                }`}
-                style={{
-                    backgroundImage: `url("/balloon-pin.jpg")`,
-                }}
-            >
-                <div className="absolute inset-0 flex items-end justify-start p-16">
-                    {/* Overlay text */}
-                    <h1 className="text-4xl text-white font-bold">
-                        Popping Perfectionism
-                    </h1>
-                </div>
-            </div>
-
             {/* Menu bar */}
             <div
-                className={`fixed top-0 left-0 w-full ${
-                    scrolled ? "bg-white shadow-md" : "bg-transparent"
+                className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
+                    scrolled
+                        ? "bg-white shadow-lg scale-[1.02] duration-500"
+                        : "bg-transparent duration-500"
                 }`}
             >
                 <div
@@ -72,50 +58,82 @@ export default function Home() {
                 </div>
             </div>
 
+            {/* Top Banner */}
+            <div
+                className={`w-screen h-screen bg-cover relative mb-2 md:mb-4 ${
+                    scrolled ? "bg-white" : "bg-transparent"
+                }`}
+                style={{
+                    backgroundImage: `url("/balloon-pin.jpg")`,
+                }}
+            >
+                <div className="absolute inset-0 flex items-end justify-start p-16">
+                    {/* Overlay text */}
+                    <h1 className="text-4xl text-white font-bold">
+                        Popping Perfectionism
+                    </h1>
+                </div>
+            </div>
+
+            {/* Intro Youtube Video */}
+            <div className="w-3/4 my-2 md:my-4">
+                <iframe
+                    className="w-full aspect-video rounded-lg"
+                    src="https://www.youtube.com/embed/eAES_fDO8Yc?si=4pKHs5z_iCBd35RY"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+            </div>
+
             {/* Counters */}
             <div
-                className="w-3/4 aspect-[3/1] my-4"
+                className="w-3/4 aspect-[3/1] my-2 md:my-4 rounded-lg"
                 style={{ backgroundImage: `url("/Bubble-bg.jpeg")` }}
             >
                 Numbers
             </div>
 
             {/* Links Grid */}
-            <div className="w-3/4 grid grid-rows-2 grid-flow-col gap-1">
-                <div
-                    className="bg-slate-200 aspect-square"
+            <div className="w-3/4 grid grid-rows-2 grid-flow-col gap-2 my-2 md:my-4">
+                <a
+                    href="#"
+                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform"
                     style={{ backgroundImage: `url("/bubble-1.jpeg")` }}
                 >
                     a
-                </div>
-                <div
-                    className="bg-slate-200 aspect-square"
+                </a>
+                <a
+                    href="#"
+                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform"
                     style={{ backgroundImage: `url("/bubble-3.jpeg")` }}
                 >
                     a
-                </div>
-                <div
-                    className="bg-slate-200 col-span-2"
+                </a>
+                <a
+                    href="#"
+                    className="bg-slate-200 col-span-2 rounded-lg hover:scale-[1.03] transform transition-transform"
                     style={{ backgroundImage: `url("/bubble-2.jpeg")` }}
                 >
                     a
-                </div>
-                <div
-                    className="bg-slate-200 aspect-square"
+                </a>
+                <a
+                    href="#"
+                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform"
                     style={{ backgroundImage: `url("/bubble-4.jpeg")` }}
                 >
                     a
-                </div>
-                <div
-                    className="bg-slate-200 aspect-square"
+                </a>
+                <a
+                    href="#"
+                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform"
                     style={{ backgroundImage: `url("/bubble-5.jpeg")` }}
                 >
                     a
-                </div>
+                </a>
             </div>
 
             {/* Intake/Contact Form */}
-            <div className="flex min-h-screen items-center justify-center my-4">
+            <div className="flex min-h-screen items-center justify-center my-2 md:my-4">
                 <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
                     <div className="mb-4">
                         <label
