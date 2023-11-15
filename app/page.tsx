@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -26,8 +26,8 @@ export default function Home() {
             <div
                 className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
                     scrolled
-                        ? "bg-white shadow-lg scale-[1.02] duration-500"
-                        : "bg-transparent duration-500"
+                        ? "bg-white shadow-lg duration-500"
+                        : "bg-transparent scale-[1.02] duration-500"
                 }`}
             >
                 <div
@@ -35,22 +35,25 @@ export default function Home() {
                         scrolled ? "text-black" : "text-white"
                     }`}
                 >
-                    <div className="flex justify-start text-2xl font-extrabold">
+                    <a
+                        href="/"
+                        className="flex justify-start text-2xl font-extrabold"
+                    >
                         Popping Perfectionism
-                    </div>
+                    </a>
                     <div className="flex justify-center">
-                        <a href="#" className="px-5">
+                        <Link href="/podcast" className="px-5">
                             Podcast
-                        </a>
-                        <a href="#" className="px-5">
+                        </Link>
+                        <Link href="/events" className="px-5">
                             Events
-                        </a>
-                        <a href="#" className="px-5">
+                        </Link>
+                        <Link href="/coaching" className="px-5">
                             Coaching
-                        </a>
-                        <a href="#" className="px-5">
+                        </Link>
+                        <Link href="/blog" className="px-5">
                             Blog
-                        </a>
+                        </Link>
                     </div>
                     <div className="flex justify-end text-2xl font-extrabold">
                         Anna and Alysha
@@ -64,7 +67,7 @@ export default function Home() {
                     scrolled ? "bg-white" : "bg-transparent"
                 }`}
                 style={{
-                    backgroundImage: `url("/balloon-pin.jpg")`,
+                    backgroundImage: `url("/backgrounds/balloon-pin.jpg")`,
                 }}
             >
                 <div className="absolute inset-0 flex items-end justify-start p-16">
@@ -97,35 +100,35 @@ export default function Home() {
             <div className="w-3/4 grid grid-rows-2 grid-flow-col gap-2 my-2 md:my-4">
                 <a
                     href="#"
-                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform"
+                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
                     style={{ backgroundImage: `url("/bubble-1.jpeg")` }}
                 >
                     a
                 </a>
                 <a
                     href="#"
-                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform"
+                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
                     style={{ backgroundImage: `url("/bubble-3.jpeg")` }}
                 >
                     a
                 </a>
                 <a
                     href="#"
-                    className="bg-slate-200 col-span-2 rounded-lg hover:scale-[1.03] transform transition-transform"
+                    className="bg-slate-200 col-span-2 rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
                     style={{ backgroundImage: `url("/bubble-2.jpeg")` }}
                 >
                     a
                 </a>
                 <a
                     href="#"
-                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform"
+                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
                     style={{ backgroundImage: `url("/bubble-4.jpeg")` }}
                 >
                     a
                 </a>
                 <a
                     href="#"
-                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform"
+                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
                     style={{ backgroundImage: `url("/bubble-5.jpeg")` }}
                 >
                     a
@@ -133,7 +136,7 @@ export default function Home() {
             </div>
 
             {/* Intake/Contact Form */}
-            <div className="flex min-h-screen items-center justify-center my-2 md:my-4">
+            <div className="flex h-4/5 items-center justify-center my-2 md:my-4">
                 <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
                     <div className="mb-4">
                         <label
