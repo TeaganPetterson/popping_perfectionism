@@ -22,29 +22,8 @@ export default function Home() {
         };
     }, []); // Empty dependency array means this effect runs once after the initial render
 
-    useEffect(() => {
-        const fetchEpisodes = async () => {
-            try {
-                const showId = "36QJTdNdnLKKHJ9T9yis1x";
-
-                const data = await getShowEpisodes(showId, "US", 5);
-                setLatestEpisodes(data.items);
-                console.log("Episodes: ", setLatestEpisodes);
-            } catch (error) {
-                console.error("Error fetching episodes: ", error);
-            }
-        };
-
-        fetchEpisodes();
-    }, []);
-
     return (
-        <main
-            className="flex flex-col items-center justify-between w-screen h-screen"
-            style={{
-                backgroundImage: `url("/backgrounds/podcast-background.jpeg")`,
-            }}
-        >
+        <main className="flex flex-col items-center justify-between w-screen h-screen">
             {/* Menu bar */}
             <div
                 className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
@@ -58,12 +37,12 @@ export default function Home() {
                         scrolled ? "text-black" : "text-white"
                     }`}
                 >
-                    <a
+                    <Link
                         href="/"
                         className="flex justify-start text-2xl font-extrabold"
                     >
                         Popping Perfectionism
-                    </a>
+                    </Link>
                     <div className="flex justify-center">
                         <Link
                             href="/podcast"
@@ -88,17 +67,26 @@ export default function Home() {
             </div>
 
             {/* Top Banner */}
-            <div>
-                <div className="absolute inset-0 flex items-end justify-start p-16">
-                    {/* Overlay text */}
-                    <h1 className="text-4xl text-white font-bold">
-                        Popping Perfectionism
-                    </h1>
-                </div>
+            <div
+                className="absolute inset-0 flex items-end justify-start p-16 h-1/2"
+                style={{
+                    backgroundImage: `url("/backgrounds/podcast-background.jpeg")`,
+                }}
+            >
+                {/* Overlay text */}
+                <h1 className="text-4xl text-white font-bold">
+                    Popping Perfectionism
+                </h1>
             </div>
 
             {/* Episodes */}
-            <div></div>
+            <div>
+                <li className="odd:bg-white even:bg-slate-100">Episode 1</li>
+                <li className="odd:bg-white even:bg-slate-100">Episode 2</li>
+                <li className="odd:bg-white even:bg-slate-100">Episode 3</li>
+                <li className="odd:bg-white even:bg-slate-100">Episode 4</li>
+                <li className="odd:bg-white even:bg-slate-100">Episode 5</li>
+            </div>
         </main>
     );
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
     const [scrolled, setScrolled] = useState(false);
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -11,27 +12,28 @@ export default function Home() {
             setScrolled(isScrolled);
         };
 
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth <= 1000);
+        };
+
         // Event listener for scrolling
+
         window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleResize);
 
         // Cleanup the event listener on component unmount
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
         };
     }, []); // Empty dependency array means this effect runs once after the initial render
 
-    return (
-        <main className="flex flex-col items-center justify-between w-screen">
-            {/* Menu bar */}
-            <div
-                className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
-                    scrolled
-                        ? "bg-white shadow-lg duration-500"
-                        : "bg-transparent scale-[1.02] duration-500"
-                }`}
-            >
+    const renderNavigation = () => {
+        if (isSmallScreen) {
+            // Render hamburger menu for small screens
+            return (
                 <div
-                    className={`w-full flex justify-around items-center p-5 ${
+                    className={`w-full flex justify-between items-center p-5 ${
                         scrolled ? "text-black" : "text-white"
                     }`}
                 >
@@ -41,6 +43,24 @@ export default function Home() {
                     >
                         Popping Perfectionism
                     </a>
+                    {/* Hamburger menu icon */}
+                    <div className="cursor-pointer justify-end">&#9776;</div>
+                </div>
+            );
+        } else {
+            // Render regular menu for larger screens
+            return (
+                <div
+                    className={`w-full flex justify-around items-center p-5 ${
+                        scrolled ? "text-black" : "text-white"
+                    }`}
+                >
+                    <Link
+                        href="/"
+                        className="flex justify-start text-2xl font-extrabold"
+                    >
+                        Popping Perfectionism
+                    </Link>
                     <div className="flex justify-center">
                         <Link href="/podcast" className="px-5">
                             Podcast
@@ -59,21 +79,36 @@ export default function Home() {
                         Anna and Alysha
                     </div>
                 </div>
+            );
+        }
+    };
+
+    return (
+        <main className="flex flex-col items-center justify-between w-screen">
+            {/* Menu bar */}
+            <div
+                className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
+                    scrolled
+                        ? "bg-white shadow-lg duration-1"
+                        : "bg-transparent scale-[1.01] duration-1"
+                }`}
+            >
+                {renderNavigation()}
             </div>
 
             {/* Top Banner */}
             <div
-                className={`w-screen h-screen bg-cover relative mb-2 md:mb-4 ${
+                className={`w-screen aspect-video bg-cover relative mb-2 md:mb-4 ${
                     scrolled ? "bg-white" : "bg-transparent"
                 }`}
                 style={{
-                    backgroundImage: `url("/backgrounds/balloon-pin.jpg")`,
+                    backgroundImage: `url("/backgrounds/laying-banner.jpg")`,
                 }}
             >
                 <div className="absolute inset-0 flex items-end justify-start p-16">
                     {/* Overlay text */}
                     <h1 className="text-4xl text-white font-bold">
-                        Popping Perfectionism
+                        Turning Perfectionists <br></br>into Connectionists
                     </h1>
                 </div>
             </div>
@@ -89,11 +124,11 @@ export default function Home() {
             </div>
 
             {/* Counters */}
-            <div
-                className="w-3/4 aspect-[3/1] my-2 md:my-4 rounded-lg"
-                style={{ backgroundImage: `url("/Bubble-bg.jpeg")` }}
-            >
-                Numbers
+            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-1 grid-flow-col justify-around bg-indigo-950">
+                <div>Numbers</div>
+                <div>Numbers</div>
+                <div>Numbers</div>
+                <div>Numbers</div>
             </div>
 
             {/* Links Grid */}
