@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import CountUp from "react-countup";
 
 export default function Home() {
     const [scrolled, setScrolled] = useState(false);
@@ -33,7 +34,7 @@ export default function Home() {
             // Render hamburger menu for small screens
             return (
                 <div
-                    className={`w-full flex justify-between items-center p-5 ${
+                    className={`w-full flex justify-around items-center p-5 ${
                         scrolled ? "text-black" : "text-white"
                     }`}
                 >
@@ -125,10 +126,19 @@ export default function Home() {
 
             {/* Counters */}
             <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-1 grid-flow-col justify-around bg-indigo-950">
-                <div>Numbers</div>
-                <div>Numbers</div>
-                <div>Numbers</div>
-                <div>Numbers</div>
+                <div>
+                    <div>Connectionists</div>
+                    <CountUp end={100} />
+                </div>
+                <div>
+                    <CountUp end={50} />
+                </div>
+                <div>
+                    <CountUp end={190900} />
+                </div>
+                <div>
+                    <CountUp end={12039} />
+                </div>
             </div>
 
             {/* Links Grid */}
