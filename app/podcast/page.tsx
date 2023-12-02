@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import getShowEpisodes from "../../spotify";
+// import getShowEpisodes from "../../spotify";
 
 export default function Home() {
     const [scrolled, setScrolled] = useState(false);
