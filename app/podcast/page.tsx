@@ -1,11 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-// import getShowEpisodes from "../../spotify";
+import getShowEpisodes from "../../spotify";
 
 export default function Home() {
     const [scrolled, setScrolled] = useState(false);
-    const [latestEpisodes, setLatestEpisodes] = useState([]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -80,12 +79,8 @@ export default function Home() {
             </div>
 
             {/* Episodes */}
-            <div>
-                <li className="odd:bg-white even:bg-slate-100">Episode 1</li>
-                <li className="odd:bg-white even:bg-slate-100">Episode 2</li>
-                <li className="odd:bg-white even:bg-slate-100">Episode 3</li>
-                <li className="odd:bg-white even:bg-slate-100">Episode 4</li>
-                <li className="odd:bg-white even:bg-slate-100">Episode 5</li>
+            <div className="absolute flex items-end justify-start p-16">
+                <div> Episode 1 </div>
             </div>
         </main>
     );

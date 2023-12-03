@@ -34,7 +34,7 @@ export default function Home() {
             // Render hamburger menu for small screens
             return (
                 <div
-                    className={`w-full flex justify-around items-center p-5 ${
+                    className={`w-full flex justify-between items-center p-5 ${
                         scrolled ? "text-black" : "text-white"
                     }`}
                 >
@@ -131,12 +131,15 @@ export default function Home() {
                     <CountUp end={100} />
                 </div>
                 <div>
+                    <div>Connectionists</div>
                     <CountUp end={50} />
                 </div>
                 <div>
+                    <div>Connectionists</div>
                     <CountUp end={190900} />
                 </div>
                 <div>
+                    <div>Connectionists</div>
                     <CountUp end={12039} />
                 </div>
             </div>
