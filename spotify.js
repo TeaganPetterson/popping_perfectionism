@@ -21,7 +21,7 @@ async function getLatestEpisodes(rssFeedUrl) {
 
             console.log("Latest Episodes:");
             for (let i = 0; i < 5; i++) {
-                console.log(typeof items[i].title, typeof items[i].description);
+                console.log(items[i].title, items[i].description);
                 latestEpisodes.push(items[i]);
             }
 
