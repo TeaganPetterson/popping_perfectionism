@@ -108,8 +108,9 @@ export default function Home() {
             >
                 <div className="absolute inset-0 flex items-end justify-start p-16">
                     {/* Overlay text */}
-                    <h1 className="text-4xl text-white font-bold">
-                        Turning Perfectionists <br></br>into Connectionists
+                    <h1 className="text-3xl text-white font-bold">
+                        Turning Perfectionists <br />
+                        into Connectionists
                     </h1>
                 </div>
             </div>

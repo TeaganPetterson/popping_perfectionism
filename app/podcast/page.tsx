@@ -1,10 +1,20 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import getShowEpisodes from "../../spotify";
+import { getLatestEpisodes } from "../../spotify";
 
 export default function Home() {
+    interface Episode {
+        title: string[];
+        description: string[];
+        link: string[];
+        guid: object;
+        pubDate: string[];
+        enclosure: object;
+    }
+
     const [scrolled, setScrolled] = useState(false);
+    const [latestEpisodes, setLatestEpisodes] = useState<Episode[]>([]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,8 +31,25 @@ export default function Home() {
         };
     }, []); // Empty dependency array means this effect runs once after the initial render
 
+    useEffect(() => {
+        // Call the getLatestEpisodes function and update the state with the latest episodes
+        getLatestEpisodes("https://anchor.fm/s/40734de0/podcast/rss")
+            .then((episodes: Episode[]) => setLatestEpisodes(episodes))
+            .catch((error) =>
+                console.error("Error getting latest episodes:", error)
+            );
+    }, []);
+
+    for (let i = 0; i < 5; i++) {
+        console.log(
+            latestEpisodes.length > 0
+                ? latestEpisodes[i].title[0]
+                : "No episodes available"
+        );
+    }
+
     return (
-        <main className="flex flex-col items-center justify-between w-screen h-screen">
+        <main className="flex flex-col items-center justify-between w-screen">
             {/* Menu bar */}
             <div
                 className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
@@ -67,20 +94,26 @@ export default function Home() {
 
             {/* Top Banner */}
             <div
-                className="absolute inset-0 flex items-end justify-start p-16 h-1/2"
+                className="relative inset-0 flex items-end justify-start p-16 w-full aspect-[5/3] bg-cover"
                 style={{
                     backgroundImage: `url("/backgrounds/podcast-background.jpeg")`,
                 }}
-            >
-                {/* Overlay text */}
-                <h1 className="text-4xl text-white font-bold">
-                    Popping Perfectionism
-                </h1>
-            </div>
+            ></div>
 
             {/* Episodes */}
-            <div className="absolute flex items-end justify-start p-16">
-                <div> Episode 1 </div>
+            <div className="relative p-16">
+                <table>
+                    <tbody>
+                        {latestEpisodes.map((episode, index) => (
+                            <tr
+                                key={index}
+                                className="mb-4 odd:bg-white even:bg-slate-50"
+                            >
+                                <td>{episode.title[0]}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </main>
     );

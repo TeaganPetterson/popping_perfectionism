@@ -1,6 +1,6 @@
+// spotify.js
+
 const axios = require("axios");
-const { isUtf8 } = require("buffer");
-const { get } = require("https");
 const parseString = require("xml2js").parseString;
 
 async function getLatestEpisodes(rssFeedUrl) {
@@ -8,30 +8,28 @@ async function getLatestEpisodes(rssFeedUrl) {
         const response = await axios.get(rssFeedUrl);
         const xmlData = response.data;
 
-        parseString(xmlData, (err, result) => {
-            if (err) {
-                console.error("Error parsing XML:", err);
-                return;
-            }
+        return new Promise((resolve, reject) => {
+            parseString(xmlData, (err, result) => {
+                if (err) {
+                    console.error("Error parsing XML:", err);
+                    reject(err);
+                }
 
-            // Assuming a standard RSS feed structure
-            const items = result.rss.channel[0].item;
+                const items = result.rss.channel[0].item;
+                let latestEpisodes = [];
 
-            let latestEpisodes = [];
+                console.log("Latest Episodes:");
+                for (let i = 0; i < 5; i++) {
+                    latestEpisodes.push(items[i]);
+                }
 
-            console.log("Latest Episodes:");
-            for (let i = 0; i < 5; i++) {
-                console.log(items[i].title, items[i].description);
-                latestEpisodes.push(items[i]);
-            }
-
-            return latestEpisodes;
+                resolve(items);
+            });
         });
     } catch (error) {
         console.error("Error fetching or parsing RSS feed:", error.message);
+        throw error;
     }
 }
 
-// Example usage with the provided Anchor RSS feed URL
-const anchorRSSFeedUrl = "https://anchor.fm/s/40734de0/podcast/rss";
-getLatestEpisodes(anchorRSSFeedUrl);
+module.exports = { getLatestEpisodes };
