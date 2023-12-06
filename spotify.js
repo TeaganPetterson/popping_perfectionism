@@ -15,7 +15,6 @@ async function getLatestEpisodes(rssFeedUrl) {
                     console.error("Error parsing XML:", err);
                     reject(err);
                 }
-
                 const items = result.rss.channel[0].item;
 
                 for (let i = 0; i < items.length; i++) {

@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { Button, ButtonGroup } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
 import { getLatestEpisodes } from "../../spotify";
@@ -28,6 +29,18 @@ export default function Home() {
             return newVisibility;
         });
     };
+
+    const [episodeVisibility, setEpisodeVisibility] = useState(false);
+
+    useEffect(() => {
+        // Set visibility to true after a short delay for smooth transition
+        const visibilityTimeout = setTimeout(() => {
+            setEpisodeVisibility(true);
+        }, 500);
+
+        // Cleanup the timeout on component unmount
+        return () => clearTimeout(visibilityTimeout);
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -62,7 +75,8 @@ export default function Home() {
     // }
 
     return (
-        <main className="flex flex-col items-center justify-between w-screen bg-cover bg-gradient-to-b from-sky-800 to-fuchsia-800">
+        <main className="flex flex-col items-center justify-between w-screen">
+            <div className="fixed w-screen h-screen bg-gradient-to-b from-sky-200 via-sky-400 via-[27%] to-sky-200 z-[-999]" />
             {/* Menu bar */}
             <div
                 className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
@@ -73,7 +87,7 @@ export default function Home() {
             >
                 <div
                     className={`w-full flex justify-around items-center p-5 ${
-                        scrolled ? "text-black" : "text-white"
+                        scrolled ? "text-black" : "text-white drop-shadow-lg"
                     }`}
                 >
                     <Link
@@ -106,53 +120,99 @@ export default function Home() {
             </div>
 
             {/* Top Banner */}
-            <div
-                className="relative inset-0 flex items-center justify-center p-16 w-full aspect-[4/1] bg-cover"
-                // style={{
-                //     backgroundImage: `url("/backgrounds/podcast-background.jpeg")`,
-                // }}
-            >
-                <div className="relative pt-32">
+            <div className="relative flex flex-col p-16 w-5/6 aspect-[4/1] bg-cover">
+                <div className="flex pt-32 justify-center items-center">
                     {/* Overlay text */}
-                    <h1 className="text-3xl text-white font-bold">Episodes</h1>
+                    <h1 className="text-8xl text-white font-bold italic">
+                        <span className="relative">
+                            Episodes
+                            <span className="absolute top-0 left-0 text-8xl text-black translate-x-2 translate-y-4 z-[-5]">
+                                Episodes
+                            </span>
+                        </span>
+                    </h1>
+                </div>
+                <div className="relative flex justify-between items-end mt-16">
+                    <div className="align-left">Filters</div>
+                    <div className="align-center flex justify-between">
+                        <Button
+                            variant="solid"
+                            className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:scale-105"
+                        >
+                            <Link href="https://open.spotify.com/show/36QJTdNdnLKKHJ9T9yis1x?si=ccL5gzeuSRSycs8ulVwIww&nd=1">
+                                <Image
+                                    alt="Spotify"
+                                    src="/links/spotify.svg"
+                                    width="50"
+                                    height="50"
+                                    className="h-2/3 hover:{transform: scale(1.05)}"
+                                ></Image>
+                            </Link>
+                        </Button>
+                        <Button
+                            variant="solid"
+                            className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:scale-105"
+                        >
+                            <Link href="https://podcasts.apple.com/us/podcast/popping-perfectionism/id1541900808">
+                                <Image
+                                    alt="Apple"
+                                    src="/links/apple.svg"
+                                    width="50"
+                                    height="50"
+                                    className="h-2/3"
+                                ></Image>
+                            </Link>
+                        </Button>
+                        <Button
+                            variant="solid"
+                            className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:scale-105"
+                        >
+                            <Link href="https://www.youtube.com/channel/UCCNAUBfqraWmx8A2YO4BDqA">
+                                <Image
+                                    alt="Youtube"
+                                    src="/links/youtube.svg"
+                                    width="50"
+                                    height="50"
+                                    className="h-1/2"
+                                ></Image>
+                            </Link>
+                        </Button>
+                    </div>
+                    <div className="align-right">Search</div>
                 </div>
             </div>
 
             {/* Episodes */}
-            <div className="relative p-16">
+            <div
+                className={`relative p-4 w-5/6 transition-opacity duration-500 ease-in-out opacity-${
+                    episodeVisibility ? "100" : "0"
+                }`}
+            >
                 {latestEpisodes.map((episode, index) => (
                     <div
                         key={index}
-                        className="mb-4 rounded-lg p-4 odd:bg-white bg-slate-50 flex"
+                        className="mb-4 rounded-lg p-4 bg-white w-full flex"
                     >
                         <div className="relative pr-8 text-center">
-                            <p className="text-xs">Season</p>
-                            <p className="text-xl font-semibold">
+                            <p className="text-xs text-sky-900">Season</p>
+                            <p className="text-xl font-semibold text-sky-700">
                                 {episode.title[1]}
                             </p>
-                            <p className="text-xs">Episode</p>
-                            <p className="text-xl font-semibold">
+                            <p className="text-xs text-sky-900">Episode</p>
+                            <p className="text-xl font-semibold text-sky-700">
                                 {episode.title[2]}
                             </p>
                         </div>
                         <div className="relative">
-                            <p className="text-xs">
+                            <p className="text-xs text-sky-900">
                                 {episode.pubDate[0].slice(0, -12)}
                             </p>
-                            <p className="font-semibold">{episode.title[3]}</p>
-                            <p className="font-bold text-2xl">
+                            <p className="font-semibold text-sky-900">
+                                {episode.title[3]}
+                            </p>
+                            <p className="font-bold text-2xl text-sky-700">
                                 {episode.title[4]}
                             </p>
-                            <Button
-                                onClick={() =>
-                                    toggleDescriptionVisibility(index)
-                                }
-                                className="text-fuchsia-700 cursor-pointer"
-                            >
-                                {descriptionVisibility[index]
-                                    ? "Hide Description"
-                                    : "Show Description"}
-                            </Button>
                             <div
                                 className={`text-s ${
                                     descriptionVisibility[index]
@@ -163,6 +223,16 @@ export default function Home() {
                                     __html: episode.description[0],
                                 }}
                             />
+                            <Button
+                                onClick={() =>
+                                    toggleDescriptionVisibility(index)
+                                }
+                                className="text-fuchsia-700 cursor-pointer"
+                            >
+                                {descriptionVisibility[index]
+                                    ? "Hide Description"
+                                    : "Show Description"}
+                            </Button>
                         </div>
                         {/* Add other episode details as needed */}
                     </div>
