@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { Button, ButtonGroup } from "@nextui-org/react";
@@ -21,6 +22,9 @@ export default function Home() {
         // Event listener for scrolling
 
         window.addEventListener("scroll", handleScroll);
+
+        handleResize();
+
         window.addEventListener("resize", handleResize);
 
         // Cleanup the event listener on component unmount
@@ -99,7 +103,6 @@ export default function Home() {
             >
                 {renderNavigation()}
             </div>
-
             {/* Top Banner */}
             <div
                 className={`w-screen aspect-video bg-cover relative mb-2 md:mb-4 ${
@@ -117,7 +120,6 @@ export default function Home() {
                     </h1>
                 </div>
             </div>
-
             {/* Intro Youtube Video */}
             <div className="w-3/4 my-2 md:my-4">
                 <iframe
@@ -127,70 +129,97 @@ export default function Home() {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 ></iframe>
             </div>
-
             {/* Counters */}
-            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-1 grid-flow-col justify-evenly bg-fuchsia-700">
-                <div className="flex flex-col items-center justify-evenly">
-                    <div>Episodes</div>
-                    <CountUp end={100} />
+            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-2 grid-flow-col justify-evenly bg-fuchsia-950">
+                <div className="w-2/3 text-center place-self-center">
+                    <h1 className="text-4xl font-black text-sky-300">
+                        Join Us As We Perfect Our Connectionism
+                    </h1>
+                    <br />
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                    </p>
                 </div>
-                <div className="flex flex-col items-center justify-evenly">
-                    <div>Boys checked off Anna's list</div>
-                    <CountUp end={190900} />
-                </div>
-                <div className="flex flex-col items-center justify-evenly">
-                    <div>Connectionists</div>
-                    <CountUp end={50} />
+                <div className="w-screen grid grid-rows-1 grid-flow-col justify-around place-content-center">
+                    <div className="flex flex-col justify-self-left items-center justify-evenly">
+                        <CountUp
+                            end={100}
+                            className="text-6xl font-black text-sky-300"
+                        />
+                        <div>Episodes</div>
+                    </div>
+                    <div className="flex flex-col justify-self-center items-center justify-evenly">
+                        <CountUp
+                            end={190900}
+                            className="text-6xl font-black text-sky-300"
+                        />
+                        <div>Boys checked off Anna's list</div>
+                    </div>
+                    <div className="flex flex-col justify-self-right items-center justify-evenly">
+                        <CountUp
+                            end={50}
+                            className="text-6xl font-black text-sky-300"
+                        />
+                        <div>Connectionists</div>
+                    </div>
                 </div>
             </div>
-
             {/* Links Grid */}
-            <div className="w-3/4 grid grid-rows-2 grid-flow-col gap-2 my-2 md:my-4">
-                <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
-                    <Link
+            <div className="w-3/4 my-2 md:my-4 items-center">
+                <div className="w-full justify-self-center grid grid-rows-2 grid-flow-col gap-2">
+                    <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
+                        <Link
+                            href="#"
+                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                        >
+                            Top left
+                        </Link>
+                    </Button>
+                    <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
+                        <Link
+                            href="#"
+                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                        >
+                            Bottom left
+                        </Link>
+                    </Button>
+                    <Button
                         href="#"
-                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                        className="bg-slate-200 col-span-2 rounded-lg hover:scale-[1.015] transform transition-transform duration-500"
                     >
-                        top left
-                    </Link>
-                </Button>
-                <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
-                    <Link
-                        href="#"
-                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
-                    >
-                        bottom left
-                    </Link>
-                </Button>
-                <Button
-                    href="#"
-                    className="bg-slate-200 col-span-2 rounded-lg hover:scale-[1.015] transform transition-transform duration-500"
-                >
-                    <Link
-                        href="#"
-                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
-                    >
-                        Meet the Crew
-                    </Link>
-                </Button>
-                <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
-                    <Link
-                        href="#"
-                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
-                    >
-                        bottom Middle
-                    </Link>
-                </Button>
-                <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
-                    <Link
-                        href="#"
-                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
-                    >
-                        bottom right
-                    </Link>
-                </Button>
+                        <Link
+                            href="#"
+                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                        >
+                            Meet the Crew
+                        </Link>
+                    </Button>
+                    <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
+                        <Link
+                            href="#"
+                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                        >
+                            Bottom Middle
+                        </Link>
+                    </Button>
+                    <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
+                        <Link
+                            href="#"
+                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                        >
+                            Bottom right
+                        </Link>
+                    </Button>
+                </div>
             </div>
-
             {/* Intake/Contact Form */}
             <div className="flex h-4/5 items-center justify-center my-2 md:my-4">
                 <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
@@ -245,6 +274,105 @@ export default function Home() {
                     </div>
                 </form>
             </div>
+            {/* Footer */}
+            {/* Footer */}
+            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white justify-evenly bg-sky-950">
+                <div className="flex h-full justify-around p-8">
+                    {/* Contacts */}
+                    <div className="h-full justify-evenly flex flex-col items-center">
+                        <h3 className="text-lg font-bold mb-2">
+                            Mailing Address
+                        </h3>
+                        <p>123 Main Street</p>
+                        <p>Suite 456</p>
+                        <p>City, State 78901</p>
+                        <h3 className="text-lg font-bold mb-2">Contact Us</h3>
+                        <p>Phone: (123) 456-7890</p>
+                        <p>Email: info@example.com</p>
+                    </div>
+
+                    {/* Page Redirects */}
+                    <div className="h-full justify-evenly flex flex-col items-center">
+                        <h3 className="text-lg font-bold mb-2">Explore</h3>
+                        <br />
+                        <Link href="/">Home</Link>
+                        <Link href="/podcast">Podcast</Link>
+                        <Link href="/events">Events</Link>
+                        <Link href="/coaching">Coaching</Link>
+                        <Link href="/blog">Blog</Link>
+                    </div>
+
+                    {/* Social Media Links */}
+                    <div className="h-full justify-evenly flex flex-col items-center">
+                        <h3 className="text-lg font-bold mb-2">Follow Us</h3>
+                        <div className="space-x-4 flex">
+                            <Button
+                                radius="full"
+                                variant="solid"
+                                className="bg-white rounded-full m-1 transition-transform transform-gpu hover:scale-105 h-10 w-10 flex items-center justify-center"
+                            >
+                                <Link href="https://www.facebook.com/poppingperfectionism/">
+                                    <Image
+                                        alt="Facebook"
+                                        src="/icons/facebook-icon.png"
+                                        width="30"
+                                        height="30"
+                                    ></Image>
+                                </Link>
+                            </Button>
+                            <Button
+                                variant="solid"
+                                className="bg-white rounded-full m-1 transition-transform transform-gpu hover:scale-105 h-10 w-10 flex items-center justify-center"
+                                radius="full"
+                            >
+                                <Link href="https://www.instagram.com/poppingperfectionism/?hl=en">
+                                    <Image
+                                        alt="Instagram"
+                                        src="/icons/instagram-icon.png"
+                                        width="30"
+                                        height="30"
+                                    ></Image>
+                                </Link>
+                            </Button>
+                            <Button
+                                variant="solid"
+                                className="bg-white rounded-full m-1 transition-transform transform-gpu hover:scale-105 h-10 w-10 flex items-center justify-center"
+                                radius="full"
+                            >
+                                <Link href="https://www.linkedin.com/company/popping-perfectionism/about/">
+                                    <Image
+                                        alt="LinkedIn"
+                                        src="/icons/linkedin-icon.png"
+                                        width="30"
+                                        height="30"
+                                    ></Image>
+                                </Link>
+                            </Button>
+                            <Button
+                                variant="solid"
+                                className="bg-white rounded-full m-1 transition-transform transform-gpu hover:scale-105 h-10 w-10 flex items-center justify-center"
+                            >
+                                <Link href="https://www.youtube.com/channel/UCCNAUBfqraWmx8A2YO4BDqA">
+                                    <Image
+                                        alt="Youtube"
+                                        src="/icons/youtube-icon.svg"
+                                        width="30"
+                                        height="30"
+                                    ></Image>
+                                </Link>
+                            </Button>
+                        </div>
+                        <div>Found a bug on website?</div>
+                        <div>
+                            If you found anything on the <br />
+                            website that is not working <br />
+                            properly, please tell us about <br />
+                            it, so we can fix it.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            f
         </main>
     );
 }

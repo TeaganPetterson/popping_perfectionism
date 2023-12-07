@@ -57,6 +57,9 @@ export default function Home() {
         // Event listener for scrolling
 
         window.addEventListener("scroll", handleScroll);
+
+        handleResize();
+
         window.addEventListener("resize", handleResize);
 
         // Cleanup the event listener on component unmount
