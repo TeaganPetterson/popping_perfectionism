@@ -36,7 +36,7 @@ export default function Home() {
             return (
                 <div
                     className={`w-full flex justify-between items-center p-5 ${
-                        scrolled ? "text-black" : "text-white"
+                        scrolled ? "text-black" : "text-white drop-shadow-lg"
                     }`}
                 >
                     <a
@@ -54,7 +54,9 @@ export default function Home() {
             return (
                 <div
                     className={`w-full flex justify-around items-center p-5 ${
-                        scrolled ? "text-black" : "text-white"
+                        scrolled
+                            ? "text-black"
+                            : "text-white drop-shadow-lg drop-shadow-white"
                     }`}
                 >
                     <Link
@@ -91,8 +93,8 @@ export default function Home() {
             <div
                 className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
                     scrolled
-                        ? "bg-white shadow-lg duration-1"
-                        : "bg-transparent scale-[1.01] duration-1"
+                        ? "bg-white shadow-lg duration-500"
+                        : "bg-transparent scale-[1.02] duration-500"
                 }`}
             >
                 {renderNavigation()}
@@ -127,18 +129,18 @@ export default function Home() {
             </div>
 
             {/* Counters */}
-            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-1 grid-flow-col justify-around bg-fuchsia-700">
+            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-1 grid-flow-col justify-evenly bg-fuchsia-700">
                 <div className="flex flex-col items-center justify-evenly">
                     <div>Episodes</div>
                     <CountUp end={100} />
                 </div>
                 <div className="flex flex-col items-center justify-evenly">
-                    <div>Connectionists</div>
-                    <CountUp end={50} />
+                    <div>Boys checked off Anna's list</div>
+                    <CountUp end={190900} />
                 </div>
                 <div className="flex flex-col items-center justify-evenly">
-                    <div>Boys on Anna's list</div>
-                    <CountUp end={190900} />
+                    <div>Connectionists</div>
+                    <CountUp end={50} />
                 </div>
             </div>
 

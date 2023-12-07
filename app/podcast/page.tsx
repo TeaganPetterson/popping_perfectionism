@@ -18,6 +18,8 @@ export default function Home() {
     const [scrolled, setScrolled] = useState(false);
     const [latestEpisodes, setLatestEpisodes] = useState<Episode[]>([]);
 
+    const [isSmallScreen, setIsSmallScreen] = useState(false);
+
     const [descriptionVisibility, setDescriptionVisibility] = useState(
         latestEpisodes.map(() => false)
     );
@@ -48,12 +50,19 @@ export default function Home() {
             setScrolled(isScrolled);
         };
 
+        const handleResize = () => {
+            setIsSmallScreen(window.innerWidth <= 1000);
+        };
+
         // Event listener for scrolling
+
         window.addEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleResize);
 
         // Cleanup the event listener on component unmount
         return () => {
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
         };
     }, []); // Empty dependency array means this effect runs once after the initial render
 
@@ -66,20 +75,33 @@ export default function Home() {
             );
     }, []);
 
-    return (
-        <main className="flex flex-col items-center justify-between w-screen">
-            <div className="fixed w-screen h-screen bg-gradient-to-b from-sky-200 via-sky-400 via-[27%] to-sky-200 z-[-999]" />
-            {/* Menu bar */}
-            <div
-                className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
-                    scrolled
-                        ? "bg-white shadow-lg duration-500"
-                        : "bg-transparent scale-[1.02] duration-500"
-                }`}
-            >
+    const renderNavigation = () => {
+        if (isSmallScreen) {
+            // Render hamburger menu for small screens
+            return (
+                <div
+                    className={`w-full flex justify-between items-center p-5 ${
+                        scrolled ? "text-black" : "text-white drop-shadow-lg"
+                    }`}
+                >
+                    <a
+                        href="/"
+                        className="flex justify-start text-2xl font-extrabold"
+                    >
+                        Popping Perfectionism
+                    </a>
+                    {/* Hamburger menu icon */}
+                    <div className="cursor-pointer justify-end">&#9776;</div>
+                </div>
+            );
+        } else {
+            // Render regular menu for larger screens
+            return (
                 <div
                     className={`w-full flex justify-around items-center p-5 ${
-                        scrolled ? "text-black" : "text-white drop-shadow-lg"
+                        scrolled
+                            ? "text-black"
+                            : "text-white drop-shadow-lg drop-shadow-white"
                     }`}
                 >
                     <Link
@@ -89,10 +111,7 @@ export default function Home() {
                         Popping Perfectionism
                     </Link>
                     <div className="flex justify-center">
-                        <Link
-                            href="/podcast"
-                            className="px-5 font-bold underline"
-                        >
+                        <Link href="/podcast" className="px-5">
                             Podcast
                         </Link>
                         <Link href="/events" className="px-5">
@@ -109,6 +128,23 @@ export default function Home() {
                         Anna and Alysha
                     </div>
                 </div>
+            );
+        }
+    };
+
+    return (
+        <main className="flex flex-col items-center justify-between w-screen">
+            <div className="fixed w-screen h-screen bg-gradient-to-b from-sky-200 via-sky-400 via-[27%] to-sky-200 z-[-999]" />
+            {/* Menu bar */}
+            {/* Menu bar */}
+            <div
+                className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
+                    scrolled
+                        ? "bg-white shadow-lg duration-500"
+                        : "bg-transparent scale-[1.02] duration-500"
+                }`}
+            >
+                {renderNavigation()}
             </div>
 
             {/* Top Banner */}
