@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
+import { Button, ButtonGroup } from "@nextui-org/react";
 
 export default function Home() {
     const [scrolled, setScrolled] = useState(false);
@@ -27,7 +28,7 @@ export default function Home() {
             window.removeEventListener("scroll", handleScroll);
             window.removeEventListener("resize", handleResize);
         };
-    }, []); // Empty dependency array means this effect runs once after the initial render
+    }, []);
 
     const renderNavigation = () => {
         if (isSmallScreen) {
@@ -119,69 +120,73 @@ export default function Home() {
             <div className="w-3/4 my-2 md:my-4">
                 <iframe
                     className="w-full aspect-video rounded-lg"
-                    src="https://www.youtube.com/embed/eAES_fDO8Yc?si=4pKHs5z_iCBd35RY"
+                    src="https://www.youtube.com/embed/RIIhXg6Sj6Q?si=WegvbnB91FNV_rnD"
                     title="YouTube video player"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 ></iframe>
             </div>
 
             {/* Counters */}
-            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-1 grid-flow-col justify-around bg-indigo-950">
-                <div>
-                    <div>Connectionists</div>
+            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-1 grid-flow-col justify-around bg-fuchsia-700">
+                <div className="flex flex-col items-center justify-evenly">
+                    <div>Episodes</div>
                     <CountUp end={100} />
                 </div>
-                <div>
+                <div className="flex flex-col items-center justify-evenly">
                     <div>Connectionists</div>
                     <CountUp end={50} />
                 </div>
-                <div>
-                    <div>Connectionists</div>
+                <div className="flex flex-col items-center justify-evenly">
+                    <div>Boys on Anna's list</div>
                     <CountUp end={190900} />
-                </div>
-                <div>
-                    <div>Connectionists</div>
-                    <CountUp end={12039} />
                 </div>
             </div>
 
             {/* Links Grid */}
             <div className="w-3/4 grid grid-rows-2 grid-flow-col gap-2 my-2 md:my-4">
-                <a
+                <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
+                    <Link
+                        href="#"
+                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                    >
+                        top left
+                    </Link>
+                </Button>
+                <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
+                    <Link
+                        href="#"
+                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                    >
+                        bottom left
+                    </Link>
+                </Button>
+                <Button
                     href="#"
-                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
-                    style={{ backgroundImage: `url("/bubble-1.jpeg")` }}
+                    className="bg-slate-200 col-span-2 rounded-lg hover:scale-[1.015] transform transition-transform duration-500"
                 >
-                    a
-                </a>
-                <a
-                    href="#"
-                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
-                    style={{ backgroundImage: `url("/bubble-3.jpeg")` }}
-                >
-                    a
-                </a>
-                <a
-                    href="#"
-                    className="bg-slate-200 col-span-2 rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
-                    style={{ backgroundImage: `url("/bubble-2.jpeg")` }}
-                >
-                    a
-                </a>
-                <a
-                    href="#"
-                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
-                    style={{ backgroundImage: `url("/bubble-4.jpeg")` }}
-                >
-                    a
-                </a>
-                <a
-                    href="#"
-                    className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500"
-                    style={{ backgroundImage: `url("/bubble-5.jpeg")` }}
-                >
-                    a
-                </a>
+                    <Link
+                        href="#"
+                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                    >
+                        Meet the Crew
+                    </Link>
+                </Button>
+                <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
+                    <Link
+                        href="#"
+                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                    >
+                        bottom Middle
+                    </Link>
+                </Button>
+                <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
+                    <Link
+                        href="#"
+                        className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                    >
+                        bottom right
+                    </Link>
+                </Button>
             </div>
 
             {/* Intake/Contact Form */}

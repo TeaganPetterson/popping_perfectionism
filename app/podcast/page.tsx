@@ -66,14 +66,6 @@ export default function Home() {
             );
     }, []);
 
-    // for (let i = 0; i < 5; i++) {
-    //     console.log(
-    //         latestEpisodes.length > 0
-    //             ? latestEpisodes[i].title[0]
-    //             : "No episodes available"
-    //     );
-    // }
-
     return (
         <main className="flex flex-col items-center justify-between w-screen">
             <div className="fixed w-screen h-screen bg-gradient-to-b from-sky-200 via-sky-400 via-[27%] to-sky-200 z-[-999]" />
@@ -184,8 +176,8 @@ export default function Home() {
 
             {/* Episodes */}
             <div
-                className={`relative p-4 w-5/6 transition-opacity duration-500 ease-in-out opacity-${
-                    episodeVisibility ? "100" : "0"
+                className={`relative p-4 w-5/6 transition-opacity duration-500 ease-in-out ${
+                    episodeVisibility ? "opacity-100" : "opacity-0"
                 }`}
             >
                 {latestEpisodes.map((episode, index) => (
