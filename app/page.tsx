@@ -275,7 +275,6 @@ export default function Home() {
                 </form>
             </div>
             {/* Footer */}
-            {/* Footer */}
             <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white justify-evenly bg-sky-950">
                 <div className="flex h-full justify-around p-8">
                     {/* Contacts */}
@@ -315,8 +314,8 @@ export default function Home() {
                                     <Image
                                         alt="Facebook"
                                         src="/icons/facebook-icon.png"
-                                        width="30"
-                                        height="30"
+                                        width="28"
+                                        height="28"
                                     ></Image>
                                 </Link>
                             </Button>
@@ -343,8 +342,8 @@ export default function Home() {
                                     <Image
                                         alt="LinkedIn"
                                         src="/icons/linkedin-icon.png"
-                                        width="30"
-                                        height="30"
+                                        width="27"
+                                        height="27"
                                     ></Image>
                                 </Link>
                             </Button>
@@ -362,7 +361,7 @@ export default function Home() {
                                 </Link>
                             </Button>
                         </div>
-                        <div>Found a bug on website?</div>
+                        <div className="font-bold">Found a bug on website?</div>
                         <div>
                             If you found anything on the <br />
                             website that is not working <br />
