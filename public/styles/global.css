@@ -1,0 +1,7 @@
+/* styles/global.css or styles/globals.css */
+@font-face {
+    font-family: "Lora";
+    src: url("/fonts/Lora-MediumItalic.ttf") format("ttf");
+    font-weight: normal;
+    font-style: normal;
+}
