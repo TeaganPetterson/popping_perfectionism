@@ -22,6 +22,6 @@ const config: Config = {
             body: ['"Open Sans"'],
         },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/typography")],
 };
 export default config;

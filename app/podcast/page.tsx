@@ -72,7 +72,10 @@ export default function Home() {
                     </h1>
                 </div>
                 {/* Episodes Description */}
-                <div className="w-2/3 flex pt-16 place-self-center justify-center items-center">
+                <div
+                    className="w-2/3 flex pt-16 place-self-center justify-center items-center"
+                    style={{ fontFamily: "'Bakbak One', sans-serif" }}
+                >
                     <p className="text-center text-white text-lg">
                         Co-hosts Anna and Alysha take you through the different
                         ways you can recognize, <br></br>cope with, and heal
@@ -85,7 +88,7 @@ export default function Home() {
                     <div className="align-center flex justify-between">
                         <Button
                             variant="solid"
-                            className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:scale-105"
+                            className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:translate-y-[-4px] drop-shadow-md hover:shadow-[0px_7.1195px_5.89515px_-1.89515px_rgba(0,0,0,0.3)]"
                         >
                             <Link href="https://open.spotify.com/show/36QJTdNdnLKKHJ9T9yis1x?si=ccL5gzeuSRSycs8ulVwIww&nd=1">
                                 <Image
@@ -99,7 +102,7 @@ export default function Home() {
                         </Button>
                         <Button
                             variant="solid"
-                            className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:scale-105"
+                            className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:translate-y-[-4px] drop-shadow-md hover:shadow-[0px_7.1195px_5.89515px_-1.89515px_rgba(0,0,0,0.3)]"
                         >
                             <Link href="https://podcasts.apple.com/us/podcast/popping-perfectionism/id1541900808">
                                 <Image
@@ -113,7 +116,7 @@ export default function Home() {
                         </Button>
                         <Button
                             variant="solid"
-                            className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:scale-105"
+                            className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:translate-y-[-4px] drop-shadow-md hover:shadow-[0px_7.1195px_5.89515px_-1.89515px_rgba(0,0,0,0.3)]"
                         >
                             <Link href="https://www.youtube.com/channel/UCCNAUBfqraWmx8A2YO4BDqA">
                                 <Image
@@ -135,6 +138,7 @@ export default function Home() {
                 className={`relative p-4 w-5/6 transition-opacity duration-500 ease-in-out ${
                     episodeVisibility ? "opacity-100" : "opacity-0"
                 }`}
+                style={{ fontFamily: "'Roboto Slab', sans-serif" }}
             >
                 {/* 0 7.1195px 1.89515px -1.89515px rgba(0,0,0,.3); */}
                 {latestEpisodes.map((episode, index) => (
@@ -177,7 +181,7 @@ export default function Home() {
                                     onClick={() =>
                                         toggleDescriptionVisibility(index)
                                     }
-                                    className="text-fuchsia-500 text-xs cursor-pointer"
+                                    className="text-fuchsia-500 text-xs cursor-pointer hover:text-fuchsia-300"
                                 >
                                     {descriptionVisibility[index]
                                         ? "Less"
@@ -189,9 +193,7 @@ export default function Home() {
                     </div>
                 ))}
             </div>
-            <div>
-                <Footer />
-            </div>
+            <Footer />
         </main>
     );
 }

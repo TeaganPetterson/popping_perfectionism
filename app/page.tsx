@@ -182,7 +182,9 @@ export default function Home() {
                 </form>
             </div>
             {/* Footer */}
-            <Footer />
+            <div className="bg-sky-950">
+                <Footer />
+            </div>
         </main>
     );
 }

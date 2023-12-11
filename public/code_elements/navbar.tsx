@@ -48,9 +48,7 @@ const Navbar: React.FC = () => {
             return (
                 <div
                     className={`w-full flex justify-around items-center p-5 ${
-                        scrolled
-                            ? "text-black"
-                            : "text-white drop-shadow-lg drop-shadow-white"
+                        scrolled ? "text-black" : "text-white drop-shadow-lg"
                     }`}
                 >
                     <Link
@@ -83,7 +81,7 @@ const Navbar: React.FC = () => {
 
     return (
         <div
-            className={`fixed top-0 left-0 w-full z-[9999] transform transition-transform ${
+            className={`fixed top-0 left-0 w-full z-[9999] transform-gpu transition-transform ${
                 scrolled
                     ? "bg-white shadow-lg duration-500"
                     : "bg-transparent scale-[1.02] duration-500"
