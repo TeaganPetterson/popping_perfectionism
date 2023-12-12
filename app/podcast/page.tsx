@@ -54,7 +54,7 @@ export default function Home() {
 
     return (
         <main className="flex flex-col items-center justify-between w-screen">
-            <div className="fixed w-screen h-screen bg-gradient-to-b from-sky-200 via-sky-400 via-[27%] to-sky-200 z-[-999]" />
+            <div className="fixed w-screen h-screen bg-gradient-to-b from-robin-egg-200 via-robin-egg-500 via-[27%] to-robin-egg-200 z-[-999]" />
             {/* Menu bar */}
             <Navbar />
 
@@ -85,6 +85,8 @@ export default function Home() {
                 </div>
                 <div className="relative flex justify-between items-end mt-16">
                     <div className="align-left">Filters</div>
+                    {/* sort function 
+						guests as filter */}
                     <div className="align-center flex justify-between">
                         <Button
                             variant="solid"
@@ -135,10 +137,9 @@ export default function Home() {
 
             {/* Episodes */}
             <div
-                className={`relative p-4 w-5/6 transition-opacity duration-500 ease-in-out ${
+                className={`relative p-4 w-5/6 transition-opacity duration-500 ease-in-out font-roboto ${
                     episodeVisibility ? "opacity-100" : "opacity-0"
                 }`}
-                style={{ fontFamily: "'Roboto Slab', sans-serif" }}
             >
                 {/* 0 7.1195px 1.89515px -1.89515px rgba(0,0,0,.3); */}
                 {latestEpisodes.map((episode, index) => (
@@ -148,25 +149,30 @@ export default function Home() {
                             className="mb-8 rounded-lg p-4 bg-white w-full flex"
                         >
                             <div className="relative pr-8 text-center">
-                                <p className="text-xs text-sky-950">Season</p>
-                                <p className="text-2xl font-bold text-sky-700">
+                                <p className="text-xs text-robin-egg-950">
+                                    Season
+                                </p>
+                                <p className="text-2xl font-bold text-robin-egg-700">
                                     {episode.title[1]}
                                 </p>
-                                <p className="text-xs text-sky-950">Episode</p>
-                                <p className="text-2xl font-bold text-sky-700">
+                                <p className="text-xs text-robin-egg-950">
+                                    Episode
+                                </p>
+                                <p className="text-2xl font-bold text-robin-egg-700">
                                     {episode.title[2]}
                                 </p>
                             </div>
                             <div className="relative">
-                                <p className="text-xs text-sky-950 ">
+                                <p className="text-xs text-robin-egg-950 ">
                                     {episode.pubDate[0].slice(0, -12)}
                                 </p>
-                                <p className="font-bold text-2xl text-sky-700">
+                                <p className="font-bold text-2xl text-robin-egg-700">
                                     {episode.title[4]}
                                 </p>
-                                <p className="font-semibold text-sky-900">
+                                <p className="font-semibold text-robin-egg-900">
                                     {episode.title[3]}
                                 </p>
+                                {/* want the links on each episode box */}
                                 <div
                                     className={`text-s ${
                                         descriptionVisibility[index]
@@ -181,7 +187,7 @@ export default function Home() {
                                     onClick={() =>
                                         toggleDescriptionVisibility(index)
                                     }
-                                    className="text-fuchsia-500 text-xs cursor-pointer hover:text-fuchsia-300"
+                                    className="text-french-rose-500 text-xs cursor-pointer hover:text-french-rose-300"
                                 >
                                     {descriptionVisibility[index]
                                         ? "Less"
@@ -193,7 +199,9 @@ export default function Home() {
                     </div>
                 ))}
             </div>
-            <Footer />
+            <div className="bg-robin-egg-700">
+                <Footer />
+            </div>
         </main>
     );
 }

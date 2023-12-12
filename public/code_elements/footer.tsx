@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/react";
 
 const Footer: React.FC = () => {
     return (
-        <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white justify-evenly bg-sky-950">
+        <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white justify-evenly bg-robin-egg-700">
             <div className="flex h-full justify-around p-8">
                 {/* Contacts */}
                 <div className="h-full justify-evenly flex flex-col items-center">
@@ -34,9 +34,9 @@ const Footer: React.FC = () => {
                     <h3 className="text-lg font-bold mb-2">Follow Us</h3>
                     <div className="space-x-4 flex">
                         <Button
-                            radius="full"
                             variant="solid"
                             className="bg-white rounded-full m-1 transition-transform transform-gpu hover:scale-105 h-10 w-10 flex items-center justify-center"
+                            style={{ borderRadius: "50%" }}
                         >
                             <Link href="https://www.facebook.com/poppingperfectionism/">
                                 <Image
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
                         <Button
                             variant="solid"
                             className="bg-white rounded-full m-1 transition-transform transform-gpu hover:scale-105 h-10 w-10 flex items-center justify-center"
-                            radius="full"
+                            style={{ borderRadius: "50%" }}
                         >
                             <Link href="https://www.instagram.com/poppingperfectionism/?hl=en">
                                 <Image
@@ -63,8 +63,8 @@ const Footer: React.FC = () => {
                         </Button>
                         <Button
                             variant="solid"
-                            className="bg-white rounded-full m-1 transition-transform transform-gpu hover:scale-105 h-10 w-10 flex items-center justify-center"
-                            radius="full"
+                            className="bg-white radius-full m-1 transition-transform transform-gpu hover:scale-105 h-10 w-10 flex items-center justify-center"
+                            style={{ borderRadius: "50%" }}
                         >
                             <Link href="https://www.linkedin.com/company/popping-perfectionism/about/">
                                 <Image
@@ -77,7 +77,8 @@ const Footer: React.FC = () => {
                         </Button>
                         <Button
                             variant="solid"
-                            className="bg-white rounded-full m-1 transition-transform transform-gpu hover:scale-105 h-10 w-10 flex items-center justify-center"
+                            className="bg-white m-1 transition-transform transform-gpu hover:scale-105 h-fit w-fit flex items-center justify-center"
+                            style={{ borderRadius: "50%" }}
                         >
                             <Link href="https://www.youtube.com/channel/UCCNAUBfqraWmx8A2YO4BDqA">
                                 <Image

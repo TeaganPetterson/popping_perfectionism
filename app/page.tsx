@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { Button, ButtonGroup } from "@nextui-org/react";
@@ -9,7 +8,7 @@ import Footer from "@/public/code_elements/footer";
 
 export default function Home() {
     return (
-        <main className="flex flex-col items-center justify-between w-screen">
+        <main className="flex flex-col items-center justify-between w-screen font-roboto">
             {/* Menu bar */}
             <Navbar />
             {/* Top Banner */}
@@ -37,10 +36,10 @@ export default function Home() {
                 ></iframe>
             </div>
             {/* Counters */}
-            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-2 grid-flow-col justify-evenly bg-fuchsia-950">
+            <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-2 grid-flow-col justify-evenly bg-fuchsia-300">
                 <div className="w-2/3 text-center place-self-center">
-                    <h1 className="text-4xl font-black text-sky-300">
-                        Join Us As We Perfect Our Connectionism
+                    <h1 className="text-4xl font-black text-white">
+                        The Growing World of Connectionists
                     </h1>
                     <br />
                     <p>
@@ -57,23 +56,33 @@ export default function Home() {
                 </div>
                 <div className="w-screen grid grid-rows-1 grid-flow-col justify-around place-content-center">
                     <div className="flex flex-col justify-self-left items-center justify-evenly">
-                        <CountUp
-                            end={100}
-                            className="text-6xl font-black text-sky-300"
-                        />
+                        <h1>
+                            <span className="relative">
+                                <CountUp
+                                    end={100}
+                                    className="text-6xl font-black text-white"
+                                />
+                                <span className="absolute text-black translate-x-2 translate-y-4 z-[-5]">
+                                    <CountUp
+                                        end={100}
+                                        className="text-6xl font-black text-french-rose-450"
+                                    />
+                                </span>
+                            </span>
+                        </h1>
                         <div>Episodes</div>
                     </div>
                     <div className="flex flex-col justify-self-center items-center justify-evenly">
                         <CountUp
                             end={190900}
-                            className="text-6xl font-black text-sky-300"
+                            className="text-6xl font-black text-white"
                         />
                         <div>Boys checked off Anna's list</div>
                     </div>
                     <div className="flex flex-col justify-self-right items-center justify-evenly">
                         <CountUp
                             end={50}
-                            className="text-6xl font-black text-sky-300"
+                            className="text-6xl font-black text-white"
                         />
                         <div>Connectionists</div>
                     </div>
@@ -85,7 +94,7 @@ export default function Home() {
                     <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
                         <Link
                             href="#"
-                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                            className="bg-robin-egg-500 h-full w-full flex items-center justify-center rounded-lg"
                         >
                             Top left
                         </Link>
@@ -93,7 +102,7 @@ export default function Home() {
                     <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
                         <Link
                             href="#"
-                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                            className="bg-robin-egg-500 h-full w-full flex items-center justify-center rounded-lg"
                         >
                             Bottom left
                         </Link>
@@ -104,7 +113,7 @@ export default function Home() {
                     >
                         <Link
                             href="#"
-                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                            className="bg-robin-egg-500 h-full w-full flex items-center justify-center rounded-lg"
                         >
                             Meet the Crew
                         </Link>
@@ -112,7 +121,7 @@ export default function Home() {
                     <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
                         <Link
                             href="#"
-                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                            className="bg-robin-egg-500 h-full w-full flex items-center justify-center rounded-lg"
                         >
                             Bottom Middle
                         </Link>
@@ -120,7 +129,7 @@ export default function Home() {
                     <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
                         <Link
                             href="#"
-                            className="bg-sky-400 h-full w-full flex items-center justify-center rounded-lg"
+                            className="bg-robin-egg-500 h-full w-full flex items-center justify-center rounded-lg"
                         >
                             Bottom right
                         </Link>
@@ -182,7 +191,7 @@ export default function Home() {
                 </form>
             </div>
             {/* Footer */}
-            <div className="bg-sky-950">
+            <div className="bg-robin-egg-700">
                 <Footer />
             </div>
         </main>
