@@ -20,6 +20,11 @@ export default function RootLayout({
             <head>
                 <link
                     rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+                />
+                <link rel="stylesheet" href="/globals.css" />
+                <link
+                    rel="stylesheet"
                     href="https://fonts.googleapis.com/css2?family=Questrial:wght@100;200;300;400;500;600;700;800;900&display=swap"
                 />
             </head>

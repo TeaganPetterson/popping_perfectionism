@@ -39,6 +39,8 @@ async function getLatestEpisodes(rssFeedUrl) {
                             wholeTitle.indexOf(" ") + 1,
                             wholeTitle.indexOf(": ")
                         );
+                    } else {
+                        seasonName = "PILOT SEASON";
                     }
                     let titleName;
                     if (wholeTitle.indexOf(": ") > 0) {

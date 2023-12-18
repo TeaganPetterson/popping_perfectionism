@@ -19,6 +19,8 @@ export default function Home() {
 
     const [latestEpisodes, setLatestEpisodes] = useState<Episode[]>([]);
 
+    const [uniqueSeasons, setUniqueSeasons] = useState<string[]>([]);
+
     const [descriptionVisibility, setDescriptionVisibility] = useState(
         latestEpisodes.map(() => false)
     );
@@ -52,9 +54,23 @@ export default function Home() {
             );
     }, []);
 
+    useEffect(() => {
+        const seasons = [
+            ...new Set(latestEpisodes.map((episode) => episode.title[3])),
+        ];
+        setUniqueSeasons(seasons);
+    }, [latestEpisodes]);
+
+    const [selectedSeason, setSelectedSeason] = useState<string | null>(null);
+
+    const handleSeasonChange = (season: string) => {
+        console.log("Selected Season:", season);
+        setSelectedSeason(season);
+    };
+
     return (
-        <main className="flex flex-col items-center justify-between w-screen">
-            <div className="fixed w-screen h-screen bg-gradient-to-b from-robin-egg-200 via-robin-egg-500 via-[27%] to-robin-egg-200 z-[-999]" />
+        <main className="flex flex-col items-center justify-between w-screen font-title">
+            <div className="fixed w-screen h-screen bg-gradient-to-b from-cerulean-300 via-cerulean-500 via-[27%] to-cerulean-300 z-[-999]" />
             {/* Menu bar */}
             <Navbar />
 
@@ -65,29 +81,61 @@ export default function Home() {
                     <h1 className="text-8xl text-white font-black italic">
                         <span className="relative">
                             EPISODES
-                            <span className="absolute top-0 left-0 text-8xl text-black translate-x-2 translate-y-4 z-[-5]">
+                            <span className="absolute top-0 left-0 text-8xl text-cerulean-700 translate-x-2 translate-y-4 z-[-5]">
                                 EPISODES
                             </span>
                         </span>
                     </h1>
                 </div>
                 {/* Episodes Description */}
-                <div
-                    className="w-2/3 flex pt-16 place-self-center justify-center items-center"
-                    style={{ fontFamily: "'Bakbak One', sans-serif" }}
-                >
-                    <p className="text-center text-white text-lg">
+                <div className="w-2/3 flex pt-16 place-self-center justify-center items-center">
+                    <p className="text-center text-white text-lg font-body">
                         Co-hosts Anna and Alysha take you through the different
                         ways you can recognize, <br></br>cope with, and heal
                         from perfectionism through their mindset of
                         connectionism.
                     </p>
                 </div>
-                <div className="relative flex justify-between items-end mt-16">
-                    <div className="align-left">Filters</div>
-                    {/* sort function 
-						guests as filter */}
-                    <div className="align-center flex justify-between">
+                <div className="relative flex items-center justify-center mt-16">
+                    <div className="absolute left-0">
+                        <select
+                            id="seasonFilter"
+                            value={selectedSeason || ""}
+                            onChange={(e) => handleSeasonChange(e.target.value)}
+                            className="rounded-lg drop-shadow-md h-12 font-body font-semibold text-cerulean-700 hover:text-french-rose-700 hover:cursor-pointer appearance-none bg-white"
+                        >
+                            <option value="" className="text-center">
+                                All Seasons
+                            </option>
+                            {uniqueSeasons.map((season) => (
+                                <option
+                                    key={season}
+                                    value={season}
+                                    className="text-center"
+                                >
+                                    {season}
+                                </option>
+                            ))}
+                        </select>
+                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                            <svg
+                                className="h-5 w-5 text-cerulean-700"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    d="M7 7l3-3 3 3m0 6l-3 3-3-3"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div className="absolute place-self-center flex w-fit">
                         <Button
                             variant="solid"
                             className="bg-white rounded-lg m-1 transition-transform transform-gpu hover:translate-y-[-4px] drop-shadow-md hover:shadow-[0px_7.1195px_5.89515px_-1.89515px_rgba(0,0,0,0.3)]"
@@ -131,7 +179,7 @@ export default function Home() {
                             </Link>
                         </Button>
                     </div>
-                    <div className="align-right">Search</div>
+                    <div className="absolute right-0">Search</div>
                 </div>
             </div>
 
@@ -142,64 +190,72 @@ export default function Home() {
                 }`}
             >
                 {/* 0 7.1195px 1.89515px -1.89515px rgba(0,0,0,.3); */}
-                {latestEpisodes.map((episode, index) => (
-                    <div className="shadow-[0px_7.1195px_1.89515px_-1.89515px_rgba(0,0,0,0.3)] rounded-lg">
-                        <div
-                            key={index}
-                            className="mb-8 rounded-lg p-4 bg-white w-full flex"
-                        >
-                            <div className="relative pr-8 text-center">
-                                <p className="text-xs text-robin-egg-950">
-                                    Season
-                                </p>
-                                <p className="text-2xl font-bold text-robin-egg-700">
-                                    {episode.title[1]}
-                                </p>
-                                <p className="text-xs text-robin-egg-950">
-                                    Episode
-                                </p>
-                                <p className="text-2xl font-bold text-robin-egg-700">
-                                    {episode.title[2]}
-                                </p>
+                {latestEpisodes
+                    .filter((episode) => {
+                        if (selectedSeason === null || selectedSeason === "") {
+                            return true; // Show all episodes when "All Seasons" is selected
+                        } else {
+                            return episode.title[3] === selectedSeason;
+                        }
+                    })
+                    .map((episode, index) => (
+                        <div className="shadow-[0px_7.1195px_1.89515px_-1.89515px_rgba(0,0,0,0.3)] rounded-lg">
+                            <div
+                                key={index}
+                                className="mb-8 rounded-lg p-4 bg-white w-full flex"
+                            >
+                                <div className="relative pr-8 text-center">
+                                    <p className="text-xs text-robin-egg-950 font-body">
+                                        Season
+                                    </p>
+                                    <p className="text-2xl font-bold text-robin-egg-700">
+                                        {episode.title[1]}
+                                    </p>
+                                    <p className="text-xs text-robin-egg-950 font-body">
+                                        Episode
+                                    </p>
+                                    <p className="text-2xl font-bold text-robin-egg-700">
+                                        {episode.title[2]}
+                                    </p>
+                                </div>
+                                <div className="relative">
+                                    <p className="text-xs text-robin-egg-950 font-body">
+                                        {episode.pubDate[0].slice(0, -12)}
+                                    </p>
+                                    <p className="font-bold text-2xl text-robin-egg-600 font-title">
+                                        {episode.title[4]}
+                                    </p>
+                                    <p className="font-semibold text-robin-egg-900">
+                                        {episode.title[3]}
+                                    </p>
+                                    {/* want the links on each episode box */}
+                                    <div
+                                        className={`text-s font-body ${
+                                            descriptionVisibility[index]
+                                                ? "block"
+                                                : "hidden"
+                                        }`}
+                                        dangerouslySetInnerHTML={{
+                                            __html: episode.description[0],
+                                        }}
+                                    />
+                                    <Button
+                                        onClick={() =>
+                                            toggleDescriptionVisibility(index)
+                                        }
+                                        className="text-french-rose-500 text-xs cursor-pointer hover:text-french-rose-300 font-body"
+                                    >
+                                        {descriptionVisibility[index]
+                                            ? "Less"
+                                            : "More"}
+                                    </Button>
+                                </div>
+                                {/* Add other episode details as needed */}
                             </div>
-                            <div className="relative">
-                                <p className="text-xs text-robin-egg-950 ">
-                                    {episode.pubDate[0].slice(0, -12)}
-                                </p>
-                                <p className="font-bold text-2xl text-robin-egg-700">
-                                    {episode.title[4]}
-                                </p>
-                                <p className="font-semibold text-robin-egg-900">
-                                    {episode.title[3]}
-                                </p>
-                                {/* want the links on each episode box */}
-                                <div
-                                    className={`text-s ${
-                                        descriptionVisibility[index]
-                                            ? "block"
-                                            : "hidden"
-                                    }`}
-                                    dangerouslySetInnerHTML={{
-                                        __html: episode.description[0],
-                                    }}
-                                />
-                                <Button
-                                    onClick={() =>
-                                        toggleDescriptionVisibility(index)
-                                    }
-                                    className="text-french-rose-500 text-xs cursor-pointer hover:text-french-rose-300"
-                                >
-                                    {descriptionVisibility[index]
-                                        ? "Less"
-                                        : "More"}
-                                </Button>
-                            </div>
-                            {/* Add other episode details as needed */}
                         </div>
-                    </div>
-                ))}
+                    ))}
             </div>
-            <div className="bg-robin-egg-700">
+            <div className="bg-cerulean-500">
                 <Footer />
             </div>
         </main>
