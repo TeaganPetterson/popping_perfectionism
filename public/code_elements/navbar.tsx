@@ -67,9 +67,6 @@ const Navbar: React.FC = () => {
                         <Link href="/coaching" className="px-5">
                             Coaching
                         </Link>
-                        <Link href="/blog" className="px-5">
-                            Blog
-                        </Link>
                     </div>
                     <div className="flex justify-end text-2xl font-extrabold">
                         Anna and Alysha

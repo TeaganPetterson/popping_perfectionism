@@ -38,22 +38,6 @@ export default function Home() {
             {/* Counters */}
             <div className="w-screen aspect-[3/1] my-2 md:my-4 text-white grid grid-rows-2 grid-flow-col justify-evenly bg-fuchsia-300">
                 <div className="text-center place-self-center pt-4 flex flex-col">
-                    {/* <h1 className="text-4xl font-black text-white font-title">
-                        The Growing World of Connectionists
-                    </h1> 
-					<div className="flex pt-32 justify-center items-center">
-
-
-                    <h1 className="text-8xl text-white font-black italic">
-                        <span className="relative">
-                            EPISODES
-                            <span className="absolute top-0 left-0 text-8xl text-black translate-x-2 translate-y-4 z-[-5]">
-                                EPISODES
-                            </span>
-                        </span>
-                    </h1>
-                </div>
-					*/}
                     <h1 className="text-6xl font-black z-50 relative">
                         <span className="relative">
                             The Growing World of Connectionists
@@ -140,7 +124,7 @@ export default function Home() {
                             href="#"
                             className="bg-robin-egg-500 h-full w-full flex items-center justify-center rounded-lg"
                         >
-                            Top left
+                            Contact Us
                         </Link>
                     </Button>
                     <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
@@ -148,7 +132,7 @@ export default function Home() {
                             href="#"
                             className="bg-robin-egg-500 h-full w-full flex items-center justify-center rounded-lg"
                         >
-                            Bottom left
+                            Podcast
                         </Link>
                     </Button>
                     <Button
@@ -167,7 +151,7 @@ export default function Home() {
                             href="#"
                             className="bg-robin-egg-500 h-full w-full flex items-center justify-center rounded-lg"
                         >
-                            Bottom Middle
+                            1-on-1 Coaching
                         </Link>
                     </Button>
                     <Button className="bg-slate-200 aspect-square rounded-lg hover:scale-[1.03] transform transition-transform duration-500">
@@ -175,7 +159,7 @@ export default function Home() {
                             href="#"
                             className="bg-robin-egg-500 h-full w-full flex items-center justify-center rounded-lg"
                         >
-                            Bottom right
+                            Book an Event
                         </Link>
                     </Button>
                 </div>

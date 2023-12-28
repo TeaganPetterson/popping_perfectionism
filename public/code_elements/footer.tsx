@@ -9,18 +9,24 @@ const Footer: React.FC = () => {
             <div className="flex h-full justify-around p-8">
                 {/* Contacts */}
                 <div className="h-full justify-evenly flex flex-col items-center">
-                    <h3 className="text-lg font-bold mb-2">Mailing Address</h3>
+                    <h3 className="text-lg font-bold mb-2 underline">
+                        Mailing Address
+                    </h3>
                     <p className="font-body">123 Main Street</p>
                     <p className="font-body">Suite 456</p>
                     <p className="font-body">City, State 78901</p>
-                    <h3 className="text-lg font-bold mb-2">Contact Us</h3>
+                    <h3 className="text-lg font-bold mb-2 underline">
+                        Contact Us
+                    </h3>
                     <p className="font-body">Phone: (123) 456-7890</p>
                     <p className="font-body">Email: info@example.com</p>
                 </div>
 
                 {/* Page Redirects */}
                 <div className="h-full justify-evenly flex flex-col items-center">
-                    <h3 className="text-lg font-bold mb-2">Explore</h3>
+                    <h3 className="text-lg font-bold mb-2 underline">
+                        Explore
+                    </h3>
                     <br />
                     <Link href="/" className="font-body">
                         Home
@@ -41,7 +47,9 @@ const Footer: React.FC = () => {
 
                 {/* Social Media Links */}
                 <div className="h-full justify-evenly flex flex-col items-center">
-                    <h3 className="text-lg font-bold mb-2">Follow Us</h3>
+                    <h3 className="text-lg font-bold mb-2 underline">
+                        Follow Us
+                    </h3>
                     <div className="space-x-4 flex">
                         <Button
                             variant="solid"
@@ -49,11 +57,11 @@ const Footer: React.FC = () => {
                         >
                             <Link href="https://www.instagram.com/poppingperfectionism/?hl=en">
                                 <Image
-                                    alt="Youtube"
-                                    src="/icons/instagram-icon.svg"
+                                    alt="Instagram"
+                                    src="/links/instagram.svg"
                                     width="50"
                                     height="50"
-                                    className="h-1/2"
+                                    className="h-4/5 hover:{transform: scale(1.05)}"
                                 ></Image>
                             </Link>
                         </Button>
@@ -63,11 +71,11 @@ const Footer: React.FC = () => {
                         >
                             <Link href="https://www.facebook.com/poppingperfectionism/">
                                 <Image
-                                    alt="Youtube"
-                                    src="/icons/facebook-icon.svg"
+                                    alt="Facebook"
+                                    src="/links/facebook.svg"
                                     width="50"
                                     height="50"
-                                    className="h-1/2"
+                                    className="h-4/5 hover:{transform: scale(1.05)}"
                                 ></Image>
                             </Link>
                         </Button>
@@ -77,11 +85,11 @@ const Footer: React.FC = () => {
                         >
                             <Link href="https://www.linkedin.com/company/popping-perfectionism/about/">
                                 <Image
-                                    alt="Youtube"
-                                    src="/icons/linkedin-icon.svg"
+                                    alt="LinkedIn"
+                                    src="/links/linkedin.svg"
                                     width="50"
                                     height="50"
-                                    className="h-1/2"
+                                    className="h-4/5"
                                 ></Image>
                             </Link>
                         </Button>
@@ -92,7 +100,7 @@ const Footer: React.FC = () => {
                             <Link href="https://www.youtube.com/channel/UCCNAUBfqraWmx8A2YO4BDqA">
                                 <Image
                                     alt="Youtube"
-                                    src="/icons/youtube-icon.svg"
+                                    src="/links/youtube.svg"
                                     width="50"
                                     height="50"
                                     className="h-1/2"

@@ -102,7 +102,7 @@ export default function Home() {
                             id="seasonFilter"
                             value={selectedSeason || ""}
                             onChange={(e) => handleSeasonChange(e.target.value)}
-                            className="rounded-lg drop-shadow-md h-12 font-body font-semibold text-cerulean-700 hover:text-french-rose-700 hover:cursor-pointer appearance-none bg-white"
+                            className="rounded-lg drop-shadow-md h-12 lg:w-[130%] font-body font-semibold text-cerulean-700 hover:text-french-rose-700 hover:cursor-pointer appearance-none"
                         >
                             <option value="" className="text-center">
                                 All Seasons
@@ -117,7 +117,7 @@ export default function Home() {
                                 </option>
                             ))}
                         </select>
-                        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <div className="absolute inset-y-0 right-0 lg:-right-16 flex items-center pr-3 pointer-events-none">
                             <svg
                                 className="h-5 w-5 text-cerulean-700"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -255,6 +255,12 @@ export default function Home() {
                         </div>
                     ))}
             </div>
+            <style jsx global>{`
+                select option {
+                    background-color: white;
+                    font-family: "font-body";
+                }
+            `}</style>
             <div className="bg-cerulean-500">
                 <Footer />
             </div>
